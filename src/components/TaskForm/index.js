@@ -2,6 +2,7 @@ import { useState } from "react";
 
 const TaskForm = (props) => {
   const [text, setText] = useState("");
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     props.addTask(text);

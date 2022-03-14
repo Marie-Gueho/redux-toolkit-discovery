@@ -8,7 +8,7 @@ import TaskForm from '../TaskForm';
 function App() {
   const [tasks, setTasks] = useState([
     {id: 1, text: 'Faire les courses', done: false},
-    {id: 1, text: 'Faire le ménage', done: true},
+    {id: 2, text: 'Faire le ménage', done: true},
   ]);
 
   const addTask = (text) => {
@@ -32,7 +32,8 @@ function App() {
   };
 
   const deleteTask = (id) => {
-    const filteredTasks = tasks.filter((task => task.id === id));
+    const filteredTasks = tasks.filter((task => task.id !== id));
+    console.log(filteredTasks)
     setTasks(filteredTasks);
   }
 
@@ -43,7 +44,7 @@ function App() {
         <TasksList tasks={tasks}
           toggleTask={toggleTask}
           deleteTask={deleteTask}/>
-        <TaskForm />
+        <TaskForm addTask={addTask} />
       </article>
     </div>
   );
