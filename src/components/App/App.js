@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Provider } from "react-redux";
+import { store } from "../redux.js"
 import './App.css';
 
 import TaskHeader from '../TaskHeader';
@@ -6,6 +7,7 @@ import TasksList from '../TasksList';
 import TaskForm from '../TaskForm';
 
 function App() {
+  /*
   const [tasks, setTasks] = useState([
     {id: 1, text: 'Faire les courses', done: false},
     {id: 2, text: 'Faire le ménage', done: true},
@@ -36,17 +38,17 @@ function App() {
     console.log(filteredTasks)
     setTasks(filteredTasks);
   }
-
+*/
   return (
-    <div className="container">
-      <article>
-        <TaskHeader tasks={tasks}/>
-        <TasksList tasks={tasks}
-          toggleTask={toggleTask}
-          deleteTask={deleteTask}/>
-        <TaskForm addTask={addTask} />
-      </article>
-    </div>
+    <Provider store={store}>
+      <div className="container">
+        <article>
+          <TaskHeader />
+          <TasksList />
+          <TaskForm />
+        </article>
+      </div>
+    </Provider>
   );
 }
 
